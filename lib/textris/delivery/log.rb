@@ -3,10 +3,10 @@ module Textris
     class Log < Textris::Delivery::Base
       def deliver(to)
         log :debug, "Sent text to #{Phony.format(to)}"
-        log :debug, "Texter: #{message.texter || 'UnknownTexter'}" + "#" +
+        log :info, "Texter: #{message.texter || 'UnknownTexter'}" + "#" +
           "#{message.action || 'unknown_action'}"
-        log :debug, "Date: #{Time.now}"
-        log :debug, "From: #{message.from || message.twilio_messaging_service_sid || 'unknown'}"
+        log :info, "Date: #{Time.now}"
+        log :info, "From: #{message.from || message.twilio_messaging_service_sid || 'unknown'}"
         log :debug, "To: #{message.to.map { |i| Phony.format(to) }.join(', ')}"
         log :debug, "Content: #{message.content}"
         (message.media_urls || []).each_with_index do |media_url, index|
