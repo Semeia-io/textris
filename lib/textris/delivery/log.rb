@@ -2,7 +2,7 @@ module Textris
   module Delivery
     class Log < Textris::Delivery::Base
       def deliver(to)
-        log :info,  "Sent text to #{Phony.format(to)}"
+        log :debug, "Sent text to #{Phony.format(to)}"
         log :debug, "Texter: #{message.texter || 'UnknownTexter'}" + "#" +
           "#{message.action || 'unknown_action'}"
         log :debug, "Date: #{Time.now}"
